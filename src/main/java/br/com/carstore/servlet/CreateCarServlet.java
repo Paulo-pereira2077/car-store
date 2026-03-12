@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/create-car")
 public class CreateCarServlet extends HttpServlet {
@@ -18,10 +19,19 @@ public class CreateCarServlet extends HttpServlet {
 
         String carName = request.getParameter("car-name");
 
-        Car car = new Car();
-        car.setName(carName);
+//        Car carJson = new Car();
+//
+//        new CarDAO().createCar(carJson);
+//
+//        request.getRequestDispatcher("index.html").forward(request, response);
 
-        new CarDAO().createCar(car);
+        String carJson = "{ \"carName\": \"" + carName + "\" }";
+
+        response.setContentType("application/json");
+
+        PrintWriter out = response.getWriter();
+        out.print(carJson);
+        out.flush();
 
         request.getRequestDispatcher("index.html").forward(request, response);
 

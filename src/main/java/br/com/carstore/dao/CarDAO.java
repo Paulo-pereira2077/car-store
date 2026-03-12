@@ -12,27 +12,27 @@ public class CarDAO {
 
     public void createCar(Car car){
 
-        String SQL = "INSERT INTO CAR (NAME) VALUES (?)";
-
-        try {
-
-            Connection connection = DriverManager.getConnection(url "jdbc:h2:~/test", user "sa", password "sa");
-
-            System.out.println("success in connection");
-
-            PreparedStatement preparedStatement= connection.prepareStatement(SQL);
-            preparedStatement.setString(1, car.getName());
-            preparedStatement.execute();
-
-            System.out.println("succes in insert command");
-
-            connection.close();
-
-        } catch (Exception e){
-
-            System.out.println("error in connection");
-
-        }
+//        String SQL = "INSERT INTO CAR (NAME) VALUES (?)";
+//
+//        try {
+//
+//            Connection connection = DriverManager.getConnection(url "jdbc:h2:~/test", user "sa", password "sa");
+//
+//            System.out.println("success in connection");
+//
+//            PreparedStatement preparedStatement= connection.prepareStatement(SQL);
+//            preparedStatement.setString(1, car.getName());
+//            preparedStatement.execute();
+//
+//            System.out.println("succes in insert command");
+//
+//            connection.close();
+//
+//        } catch (Exception e){
+//
+//            System.out.println("error in connection");
+//
+//        }
 
     }
 
