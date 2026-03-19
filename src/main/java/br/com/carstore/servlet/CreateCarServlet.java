@@ -1,6 +1,6 @@
 package br.com.carstore.servlet;
 
-import br.com.carstore.dao.CarDAO;
+import br.com.carstore.dao.CarDao;
 import br.com.carstore.model.Car;
 
 import javax.servlet.ServletException;
@@ -9,31 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet("/create-car")
 public class CreateCarServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String carName = request.getParameter("car-name");
+        String carName = req.getParameter("car-name");
 
-//        Car carJson = new Car();
-//
-//        new CarDAO().createCar(carJson);
-//
-//        request.getRequestDispatcher("index.html").forward(request, response);
+        Car car = new Car();
 
-        String carJson = "{ \"carName\": \"" + carName + "\" }";
+        car.setName(carName);
+        new CarDao().createCar(car);
 
-        response.setContentType("application/json");
-
-        PrintWriter out = response.getWriter();
-        out.print(carJson);
-        out.flush();
-
-        request.getRequestDispatcher("index.html").forward(request, response);
+        req.getRequestDispatcher("index.html").forward(req, resp);
 
     }
+
 }
+
+//        String carJson = "{ \"carName\": \"" + carName + "\" }";
+//
+//        response.setContentType("application/json");
+//
+//        PrintWriter out = response.getWriter();
+//        out.print(carJson);
+//        out.flush();
+
+//        request.getRequestDispatcher("index.html").forward(request, response);
+
