@@ -19,9 +19,8 @@ public class CreateCarServlet extends HttpServlet {
 
         String carName = req.getParameter("car-name");
 
-        Car car = new Car();
+        Car car = new Car(carName);
 
-        car.setName(carName);
         new CarDao().createCar(car);
 
         req.getRequestDispatcher("index.html").forward(req, resp);
@@ -29,14 +28,4 @@ public class CreateCarServlet extends HttpServlet {
     }
 
 }
-
-//        String carJson = "{ \"carName\": \"" + carName + "\" }";
-//
-//        response.setContentType("application/json");
-//
-//        PrintWriter out = response.getWriter();
-//        out.print(carJson);
-//        out.flush();
-
-//        request.getRequestDispatcher("index.html").forward(request, response);
 
