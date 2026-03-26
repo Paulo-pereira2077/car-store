@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <html>
 <body>
 <h2>Create Car</h2>
@@ -7,7 +8,6 @@
     <label>Car Name</label>
     <input type="text" name="car-name" id="car-name" value="${param.name}">
     <input type="hidden" id="id" name="id" value="${param.id}">
-
 
     <button type="submit">Save</button>
 
